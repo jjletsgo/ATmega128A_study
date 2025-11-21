@@ -8,11 +8,12 @@
 
 #ifndef COMMON_H_
 #define COMMON_H_
-#define F_CPU 1000000
+#define F_CPU 16000000
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include "interrupt.h"
+#include "timer0.h"
 
 
 #endif /* COMMON_H_ */

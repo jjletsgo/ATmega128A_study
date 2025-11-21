@@ -6,11 +6,10 @@
 
 #include "interrupt.h"
 
-// ISR과 main에서 같이 쓰는 플래그
 volatile uint8_t int1_flag = 0;
 
 // 전역 인터럽트 enable
-void set_global_int(void) {
+void set_global_INT(void) {
     sei();
 }
 

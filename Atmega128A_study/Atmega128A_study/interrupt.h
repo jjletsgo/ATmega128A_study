@@ -10,11 +10,9 @@
 #include "common.h"   // 여기 안에 <avr/io.h>, <avr/interrupt.h> 등이 포함되어 있다고 가정함
 #include <stdint.h>
 
-// INT1에서 토글되는 플래그 (ISR과 main에서 같이 씀)
-volatile uint8_t int1_flag;
 
 // 전역 인터럽트 enable (sei())
-void set_global_int(void);
+void set_global_INT(void);
 
 // INT1 설정 (FALLING EDGE, 플래그 클리어 + enable)
 void setup_int1(void);
