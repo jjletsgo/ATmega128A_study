@@ -12,7 +12,7 @@ int main(void)
     DDRD |= (1<<1);
 	PORTD &= ~(1<<1);
 	set_global_INT();	
-	init_timer0_ovf();
+	void init_timer0_normal_mode_OVF(); 
 	timer_ms led_timer;
 	uint8_t led_on_flag = 0;
     while (1) 

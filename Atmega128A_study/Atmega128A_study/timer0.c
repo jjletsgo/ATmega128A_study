@@ -12,26 +12,13 @@
 volatile unsigned long timer0_millis = 0; //누적 시간 (밀리 단위)
 volatile uint32_t timer0_micros = 0 ;// 누적 시간 (마이크로 단위. 찌거기로 사용)
 
+//Compare Match Interrupt 
+/*
+t=(1+OCR0)*N/Fcpu
+*/
 
-//인자로 타이머의 주소와 , ms 단위의 딜레이 간격을 주시면됩니다. 딜레이는 0~255ms 까지 가능합니다
-uint8_t timer_delay_ms(timer_ms *timer, uint16_t delay_ms)
-{
-	unsigned long now = millis();   // 한번만 읽어두고 재사용
-	// 아직 타이머가 초기화 안 됐으면, 기준점만 잡고 리턴 0
-	if (!timer->is_init_done) {
-		timer->ms_time = now;
-		timer->is_init_done = 1;
-		return 0;
-	}
-	// 초기화된 상태에서, 설정한 시간만큼 지났으면
-	if ((unsigned long)(now - timer->ms_time) >= delay_ms) {
-		timer->ms_time = now;   // 다음 주기 기준점 갱신
-		return 1;               // 한 번 1을 뿜어줌
-	}
-	return 0;
-}
 
-void init_timer0_ovf() {
+void init_timer0_normal_mode_OVF() {
 	TCCR0 &= ~((1<<WGM01) | (1<<WGM00)); //set timer normal mode
 	TCCR0 |= (1<< CS01) | (1<< CS00); // set prescaler value to 32 -> io 클럭을 32로 분주해서 사용
 	TIMSK |= (1<<TOIE0); //Timer/Counter0 Overflow Interrupt Enable
@@ -79,6 +66,23 @@ uint16_t secs() {
 	return (uint16_t)(millis()/1000);
 }
 
+//인자로 타이머의 주소와 , ms 단위의 딜레이 간격을 주시면됩니다. 딜레이는 0~255ms 까지 가능합니다
+uint8_t timer_delay_ms(timer_ms *timer, uint16_t delay_ms)
+{
+	unsigned long now = millis();   // 한번만 읽어두고 재사용
+	// 아직 타이머가 초기화 안 됐으면, 기준점만 잡고 리턴 0
+	if (!timer->is_init_done) {
+		timer->ms_time = now;
+		timer->is_init_done = 1;
+		return 0;
+	}
+	// 초기화된 상태에서, 설정한 시간만큼 지났으면
+	if ((unsigned long)(now - timer->ms_time) >= delay_ms) {
+		timer->ms_time = now;   // 다음 주기 기준점 갱신
+		return 1;               // 한 번 1을 뿜어줌
+	}
+	return 0;
+}
 
 void reset_timer0() {
 	SFIOR |= (1<<PSR0); //RESET  Timer/Counter0. 카운트값 리셋

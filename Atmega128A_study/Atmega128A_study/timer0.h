@@ -32,7 +32,7 @@ typedef struct {
 
 // 함수 프로토타입
 uint8_t timer_delay_ms(timer_ms *timer, uint16_t delay_ms);
-void init_timer0_ovf();
+void init_timer0_normal_mode_OVF() ;
 unsigned long millis();
 uint16_t secs();  // secs() 함수 선언 추가
 void reset_timer0();
