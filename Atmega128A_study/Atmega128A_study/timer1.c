@@ -24,8 +24,8 @@ void init_timer1_FastPWM_mode() {
 	cli(); //Global Interrupt Disable -> 16비트 레지스터 접근 위해서
 	OCR1A = OCR1A_VAL_FOR_8_BIT_FAST_PWM; //OCR1A값 설정
 	SREG = old_sreg; //ISR 아니므로 수동으로 SREG 복구
-	TCCR1A |= (1<< WGM10) | (1 << COM1A1) ;
-	TCCR1B |= (1 << WGM12) | (1 << CS12); // Fast PWM, 8-bit, 클럭 분주비 설정. Top은 0x00FF로 설정됨
+	TCCR1A |= (1<< WGM10) | (1 << COM1A1) ; //FAST PWM- NON INVERTING MODE.
+	TCCR1B |= (1 << WGM12) | (1 << CS12); // Fast PWM, 8-bit, 클럭 분주비 설정. Top은 0x00FF로 설정됨. (이 Top 값이 커질수록 PWM 신호의 주파수는 낮아짐)
 	DDRB |= (1 << 5); //PWM 파형 출력 가능하도록 PB5=OC1A를 출력으로 설정
 }
 

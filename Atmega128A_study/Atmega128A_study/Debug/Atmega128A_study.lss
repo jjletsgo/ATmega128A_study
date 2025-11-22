@@ -181,7 +181,7 @@ void timer1_COMPA_enable() {
 	TIMSK |= ( 1<< OCIE1A); //Timer/Counter1, Output Compare A Match Interrupt Enable
   dc:	8f b7       	in	r24, 0x3f	; 63
   de:	f8 94       	cli
-  e0:	2e e7       	ldi	r18, 0x7E	; 126
+  e0:	28 e1       	ldi	r18, 0x18	; 24
   e2:	30 e0       	ldi	r19, 0x00	; 0
   e4:	3b bd       	out	0x2b, r19	; 43
   e6:	2a bd       	out	0x2a, r18	; 42
