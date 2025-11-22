@@ -18,20 +18,10 @@ void init_port() {
 
 int main(void)
 {
-	init_port();
-	init_timer1_CTC_mode();
-	timer1_COMPA_enable();
+	init_timer1_FastPWM_mode();
 	sei();
-	
-
     while (1) 
     {
-        // int1_flag 값에 따라 LED 제어
-        if (timer1_get_flag_atomic()) {
-            PORTD |= (1 << PD2);   // flag == 1 → LED ON
-        } else {
-            PORTD &= ~(1 << PD2);  // flag == 0 → LED OFF
-        }
     }
 }
 
