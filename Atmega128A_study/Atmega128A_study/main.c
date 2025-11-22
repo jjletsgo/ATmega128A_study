@@ -6,31 +6,21 @@
  */
 
 #include "common.h"
-#include "interrupt.h"
+
 
 int main(void)
 {
-    // PD1: INT1 입력 (외부 풀업 사용한다고 했으니 내부 풀업은 안 켬)
-    DDRD &= ~(1 << PD1);      // PD1 입력 설정
-    PORTD |= (1 << PD1);  // 내부 풀업 ON
+	init_max7219();
 
-    // PD2: LED 출력
-    DDRD |= (1 << PD2);
-    PORTD &= ~(1 << PD2);     // 처음에는 LED OFF
-
-    // INT1 설정
-    setup_int1();
-
-    // 전역 인터럽트 활성화
-    set_global_int();
-
+	for( int i = 1; i<9;i++) {
+		max7219_send_cmd(i, 0x00);
+	}
     while (1) 
     {
-        // int1_flag 값에 따라 LED 제어
-        if (get_flag_atomic()) {
-            PORTD |= (1 << PD2);   // flag == 1 → LED ON
-        } else {
-            PORTD &= ~(1 << PD2);  // flag == 0 → LED OFF
-        }
+		
+		max7219_send_cmd(0x03, 0b10000000);
+
     }
 }
+
+
