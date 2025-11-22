@@ -13,6 +13,7 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include "interrupt.h"
+#include "ADC.h"
 
 
 #endif /* COMMON_H_ */
