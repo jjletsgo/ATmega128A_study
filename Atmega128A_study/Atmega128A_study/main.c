@@ -10,15 +10,13 @@
 
 int main(void)
 {
-	init_max7219();
+	init_cascaded_max7219();
 
-	for( int i = 1; i<9;i++) {
-		max7219_send_cmd(i, 0x00);
-	}
+	
     while (1) 
     {
-		
-		max7219_send_cmd(0x03, 0b10000000);
+		max7219_pacman_step(); // 한 스텝 이동
+		_delay_ms(80);         // 이동 속도 조절 (느리게/빠르게 바꾸고 싶으면 이 값만 조절)
 
     }
 }
