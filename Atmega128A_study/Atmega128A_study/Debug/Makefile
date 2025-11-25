@@ -37,9 +37,14 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../adc.c \
 ../common.c \
 ../interrupt.c \
-../main.c
+../main.c \
+../max7219.c \
+../spi.c \
+../timer0.c \
+../timer1.c
 
 
 PREPROCESSING_SRCS += 
@@ -49,24 +54,44 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+adc.o \
 common.o \
 interrupt.o \
-main.o
+main.o \
+max7219.o \
+spi.o \
+timer0.o \
+timer1.o
 
 OBJS_AS_ARGS +=  \
+adc.o \
 common.o \
 interrupt.o \
-main.o
+main.o \
+max7219.o \
+spi.o \
+timer0.o \
+timer1.o
 
 C_DEPS +=  \
+adc.d \
 common.d \
 interrupt.d \
-main.d
+main.d \
+max7219.d \
+spi.d \
+timer0.d \
+timer1.d
 
 C_DEPS_AS_ARGS +=  \
+adc.d \
 common.d \
 interrupt.d \
-main.d
+main.d \
+max7219.d \
+spi.d \
+timer0.d \
+timer1.d
 
 OUTPUT_FILE_PATH +=Atmega128A_study.elf
 
@@ -82,6 +107,13 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+./adc.o: .././adc.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 ./common.o: .././common.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -97,6 +129,34 @@ LINKER_SCRIPT_DEP+=
 	
 
 ./main.o: .././main.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./max7219.o: .././max7219.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./spi.o: .././spi.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./timer0.o: .././timer0.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./timer1.o: .././timer1.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega128a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

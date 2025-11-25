@@ -1,4 +1,4 @@
-interrupt.d interrupt.o: .././interrupt.c .././interrupt.h .././common.h \
+timer1.d timer1.o: .././timer1.c .././timer1.h .././common.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -14,9 +14,9 @@ interrupt.d interrupt.o: .././interrupt.c .././interrupt.h .././common.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- .././timer0.h .././timer1.h .././spi.h .././max7219.h
+ .././interrupt.h .././timer0.h .././spi.h .././max7219.h
 
-.././interrupt.h:
+.././timer1.h:
 
 .././common.h:
 
@@ -50,9 +50,9 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
-.././timer0.h:
+.././interrupt.h:
 
-.././timer1.h:
+.././timer0.h:
 
 .././spi.h:
 
